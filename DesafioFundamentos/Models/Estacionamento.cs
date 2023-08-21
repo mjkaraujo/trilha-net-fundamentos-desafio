@@ -17,8 +17,11 @@ namespace DesafioFundamentos.Models
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-        }
 
+            string addVeiculo = Console.ReadLine(); // Captura a placa digitada pelo usuário
+            veiculos.Add(addVeiculo); // Adiciona a placa digitada em uma lista
+        }
+            
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
@@ -26,6 +29,8 @@ namespace DesafioFundamentos.Models
             // Pedir para o usuário digitar a placa e armazenar na variável placa
             // *IMPLEMENTE AQUI*
             string placa = "";
+
+            placa = Console.ReadLine(); // Captura a placa digitada pelo usuário
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
@@ -38,8 +43,14 @@ namespace DesafioFundamentos.Models
                 int horas = 0;
                 decimal valorTotal = 0; 
 
+                horas = Convert.ToInt32(Console.ReadLine()); //Armazena a quantidade de horas digitada pelo usuário.
+
+                valorTotal = precoInicial + precoPorHora * horas;
+
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
+
+                veiculos.Remove(placa); // Remove a placa digitada
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -55,8 +66,11 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+            
+                foreach (string listaDeVeiculos in veiculos){
+                    Console.WriteLine(listaDeVeiculos); // Percorre a lista de placas cadastradas e exibe na tela
+                }
+
             }
             else
             {
